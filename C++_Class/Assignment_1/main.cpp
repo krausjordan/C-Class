@@ -44,30 +44,30 @@ int print_climit_values(){
     std::cout<< "Minimum Value of char: CHAR_MIN="<< CHAR_MIN <<std::endl;
     std::cout<< "Maximum Value of char: CHAR_MAX="<< CHAR_MAX <<std::endl;
     std::cout<< "Number of bits in a char: CHAR_BIT="<< CHAR_BIT <<std::endl;
-    std::cout<< "size of char: "<<sizeof(char)<<std::endl;
+    std::cout<< "size of char: "<<sizeof(char)<< " bytes" << std::endl;
     std::cout<< "Minimum Value of signed char: SCHAR_MIN="<< SCHAR_MIN <<std::endl;
     std::cout<< "Maximum Value of signed char: SCHAR_MAX="<< SCHAR_MAX <<std::endl;
-    std::cout<< "Size of unsigned char: "<<sizeof(signed char)<<std::endl;
+    std::cout<< "Size of unsigned char: "<<sizeof(signed char)<<" bytes" << std::endl;
     std::cout<< "Maximum Value of unsigned char: UCHAR_MAX="<< UCHAR_MAX <<std::endl;
-    std::cout<< "Size of signed char: "<<sizeof(unsigned char)<<std::endl;
+    std::cout<< "Size of signed char: "<<sizeof(unsigned char)<<" bytes" << std::endl;
     std::cout<< "Maximum number of bytes in multibyte character: MB_LEN_MAX="<< MB_LEN_MAX <<std::endl;
     std::cout<< "Minimum Value of short: SHRT_MIN="<< SHRT_MIN <<std::endl;
     std::cout<< "Maximum Value of short: SHRT_MAX="<< SHRT_MAX <<std::endl;
-    std::cout<< "Size of short: "<<sizeof(short)<<std::endl;
+    std::cout<< "Size of short: "<<sizeof(short)<<" bytes" << std::endl;
     std::cout<< "Maximum Value of unsigned short: USHRT_MAX="<< USHRT_MAX <<std::endl;
-    std::cout<< "Size of unsigned short:"<< sizeof(unsigned short)<<std::endl;
+    std::cout<< "Size of unsigned short:"<< sizeof(unsigned short)<<" bytes" << std::endl;
     std::cout<< "Minimum Value of int: INT_MIN="<< INT_MIN <<std::endl;
     std::cout<< "Maximum Value of int: INT_MAX="<< INT_MAX <<std::endl;
-    std::cout<< "Size of int:"<<sizeof(int)<<std::endl;
+    std::cout<< "Size of int:"<<sizeof(int)<<" bytes" << std::endl;
     std::cout<< "Maximum Value of unsigned int: UINT_MAX="<< UINT_MAX <<std::endl;
     std::cout<< "Minimum Value of long int: LONG_MIN="<< LONG_MIN <<std::endl;
     std::cout<< "Maximum Value of long int: LONG_MAX="<< LONG_MAX <<std::endl;
-    std::cout<< "Size of long: "<<sizeof(long)<<std::endl;
+    std::cout<< "Size of long: "<<sizeof(long)<<" bytes" << std::endl;
     std::cout<< "Maximum Value of unsigned long int: ULONG_MAX="<< ULONG_MAX <<std::endl;
     std::cout<< "Minimum Value of long long int: LLONG_MIN="<< LLONG_MIN <<std::endl;
     std::cout<< "Maximum Value of long long int: LLONG_MAX="<< LLONG_MAX <<std::endl;
     std::cout<< "Maximum Value of unsigned long long int: ULLONG_MAX="<< ULLONG_MAX <<std::endl;
-    std::cout<< "Size of long long int: " <<sizeof(long long)<<std::endl;
+    std::cout<< "Size of long long int: " <<sizeof(long long)<<" bytes" << std::endl;
 }
 
 /*
@@ -100,9 +100,9 @@ int main(int argc, char** argv) {
     int & e = arg5;
     int arg6=15;
     int & f = arg6;
-    std::cout<< "Before pointer switch, arg5="<< e<<" and arg6="<< f<< std::endl;
+    std::cout<< "Before reference switch, arg5="<< e<<" and arg6="<< f<< std::endl;
     reference_swap(e,f);
-    std::cout<< "After pointer switch, arg5="<< e <<" and arg6="<< f << std::endl;
+    std::cout<< "After reference switch, arg5="<< e <<" and arg6="<< f << std::endl;
     std::cout<<std::endl;
     
     // Verify reference swap doesn't swap if arg1<arg2
@@ -110,11 +110,11 @@ int main(int argc, char** argv) {
     int & g = arg7;
     int arg8=450;
     int & h = arg8;
-    std::cout<< "Before pointer switch, arg7="<< g<<" and arg8="<< h << std::endl;
+    std::cout<< "Before reference switch, arg7="<< g<<" and arg8="<< h << std::endl;
     reference_swap(g,h);
-    std::cout<< "After pointer switch, arg7="<< g <<" and arg8="<< h << std::endl;
+    std::cout<< "After reference switch, arg7="<< g <<" and arg8="<< h << std::endl;
     
-    // print buffer 
+    // print white space buffer 
     std::cout<<std::endl<<std::endl<<std::endl;
     
     //Call function to print climit values
