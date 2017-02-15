@@ -21,10 +21,8 @@ Date::Date() {
     
 }
 
-Date::Date(const Date &orig) {
-    //this->month=orig.get_Month();
-    //this->day=orig.get_Day();
-    //this->year=orig.get_Year();
+Date::Date(Date& orig) {
+    *this=orig;
 }
 
 Date::~Date() {

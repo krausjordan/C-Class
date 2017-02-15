@@ -266,8 +266,11 @@ int main(int argc, char** argv) {
     cout<<Julio.get_Name()<<" is Number: "<<Julio.get_ID_Number()<<" was Hired: "<<Julio.get_Hire_Date().date_to_string()<<endl;
     
     
+    cout<<endl<<endl;
+    
     //Print out operator times
-    //compare_operator_times();
+    cout<<"Over 10000 runs, average operation times are:"<<endl;
+    compare_operator_times(10000);
     
     
     

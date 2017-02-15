@@ -19,7 +19,7 @@
 class Date {
 public:
     Date();
-    Date(const Date& orig);
+    Date(Date& orig);
     virtual ~Date();
     Date(int Month, int Day, int Year);
     int get_Day();

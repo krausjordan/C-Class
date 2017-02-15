@@ -29,7 +29,7 @@ public:
 private:
     int  idNumber;
     std::string employeeName;
-    Date hireDate=Date(0,0,0);
+    Date hireDate;
     
 };
 

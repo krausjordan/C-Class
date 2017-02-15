@@ -43,6 +43,8 @@ std::string Employee::get_Name(){
     return this->employeeName;
 }
 Date Employee::get_Hire_Date(){
-    //return this->hireDate; // For some reason this only returns garbage, despite this->hireDate having the proper info at this point.
-    return Date(hireDate.get_Month(),hireDate.get_Day(),hireDate.get_Year());
+    Date z=hireDate;
+    //std::cout<<z.get_Day()<<"aaaa"<<std::endl;
+    return z; // For some reason this only returns garbage, despite this->hireDate having the proper info at this point.
+    //return Date(hireDate.get_Month(),hireDate.get_Day(),hireDate.get_Year());
 }
