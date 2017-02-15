@@ -15,11 +15,16 @@
 
 MyArray::MyArray() {
     cout<<"Null Constructor"<<endl;
-    //data= new int[0];
+    data= new int[0];
+    size=0;
 }
 
 MyArray::MyArray(int sz){ 
     cout<<"Parametarized Constructor"<<endl;
+    if(sz<1){
+        cout<<"Cannot create an Array with a size less than 1. Setting size to 1"<<endl;
+        sz=1;
+    }
     data= new int[sz];
     size= sz;
 }
@@ -33,7 +38,9 @@ MyArray::MyArray(const MyArray& orig) {
 
 MyArray::~MyArray() {
     std::cout<<"Destructor"<<std::endl;
-    delete[] data;
+    if(size>0){
+        delete[] data;
+    }
     std::cout<<"Destructor end"<<std::endl;
     //delete(this->size);
 }
@@ -51,12 +58,6 @@ int MyArray::get_size(){
     return this->size;
 }
 
-int MyArray::append(int value){
-    //int size= this->get_size();
-    //this=MyArray(size+1);
-    
-    return 0;
-}
 
 int MyArray::print_array(){
     for(int i=0;i<size;i++){

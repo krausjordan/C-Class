@@ -28,7 +28,6 @@ public:
     int get_item(int index);
     int set_item(int index, int value);
     int get_size();
-    int append(int value);
     int print_array();
 private:
     int *data;
