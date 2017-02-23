@@ -17,20 +17,26 @@
 #include "Dealer.h"
 #include "Player.h"
 #include "Deck.h"
-#include "GameInterface.h"
+//#include "GameInterface.h"
 
 class BlackJackGame {
 public:
     BlackJackGame();
     BlackJackGame(const BlackJackGame& orig);
     virtual ~BlackJackGame();
-    BlackJackGame(Dealer dealer, Player player);
+    BlackJackGame(Dealer *dealer, Player *player);
     int Play();
+    Player* returnPlayer();
+    Dealer* returnDealer();
+    Deck* returnDeck();
+    int dealHands();
+    int playerHit();
+    bool checkBust(int handValue);
 private:
-    Dealer dealer;
-    Player player;
-    Deck deck;
-    GameInterface interface;
+    Dealer* dealer;
+    Player* player;
+    //Deck deck;
+    //GameInterface interface;
     
 };
 

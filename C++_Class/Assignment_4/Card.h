@@ -35,6 +35,7 @@ public:
     int printCard();
     std::string printSuit(int suit);
     int flipCard();
+    bool isAce();
     
 private:
     int value;

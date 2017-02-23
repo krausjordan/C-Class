@@ -15,6 +15,7 @@
 #define DEALER_H
 
 #include "Hand.h"
+#include "Deck.h"
 
 class Dealer {
 public:
@@ -22,10 +23,13 @@ public:
     Dealer(const Dealer& orig);
     virtual ~Dealer();
     int checkHand();
-    int hit();
+    int hit(Card newCard, bool flipUp);
     int stay();
+    Deck* returnDeck();
+    Hand returnHand();
 private:
     Hand hand;
+    Deck deck;
     
 };
 

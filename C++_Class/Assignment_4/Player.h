@@ -21,11 +21,13 @@ public:
     Player();
     Player(const Player& orig);
     virtual ~Player();
-    int hit();
+    int hit(Card newCard);
     int stay();
-    int bet();
+    int bet(int bet);
     int checkHand();
-    //int split_hand();
+    int checkMoney();
+    int addMoney(int funds);
+    Hand returnHand();
 private:
     Hand hand;
     int money;

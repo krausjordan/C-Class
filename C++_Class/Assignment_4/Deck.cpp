@@ -30,7 +30,7 @@ Deck::Deck() {
         deck.push_back(Card(10,Suit(i),false,false,true,"Jack"));
         deck.push_back(Card(10,Suit(i),false,false,true,"Queen"));
         deck.push_back(Card(10,Suit(i),false,false,true,"King"));
-        deck.push_back(Card(1,Suit(i),false,true,true,"Ace"));
+        deck.push_back(Card(11,Suit(i),false,true,true,"Ace"));
     }
     
     //Pick random seed for shuffle
@@ -47,7 +47,8 @@ Deck::Deck() {
     std::cout<<"Deck is now shuffled"<<std::endl;
 }
 
-Deck::Deck(const Deck& orig) {
+Deck::Deck(const Deck& orig){
+    *this=orig;
 }
 
 Deck::~Deck() {
@@ -75,11 +76,12 @@ int Deck::printDeck(){
 }
 
 Card Deck::drawCard(){
-    std::cout<<"Draw Card"<<std::endl;
+    //std::cout<<"Draw Card"<<std::endl;
     Card temp = deck.back();
     deck.pop_back();
-    temp.printCard();
+    //temp.printCard();
     size=deck.size();
+    //std::cout<<"Done Drawing card"<<std::endl;
     return temp;
 }
 

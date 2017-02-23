@@ -14,13 +14,25 @@
 #ifndef GAMEINTERFACE_H
 #define GAMEINTERFACE_H
 
+#include "BlackJackGame.h"
+#include <iostream>
+#include <climits>
+using namespace std;
+
 class GameInterface {
 public:
     GameInterface();
     GameInterface(const GameInterface& orig);
     virtual ~GameInterface();
+    GameInterface(BlackJackGame *aGame);
+    int waitForPlayerAction();
+    int displayWelcome();
+    int displayWinner();
+    int displayTable();
+    int getBet();
+    int getAction();
 private:
-
+    BlackJackGame *aGame;
 };
 
 #endif /* GAMEINTERFACE_H */

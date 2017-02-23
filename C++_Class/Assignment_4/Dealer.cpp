@@ -14,6 +14,7 @@
 #include "Dealer.h"
 
 Dealer::Dealer() {
+    this->deck= Deck();
 }
 
 Dealer::Dealer(const Dealer& orig) {
@@ -27,11 +28,23 @@ int Dealer::checkHand(){
     return hand.checkHand();
 }
 
-int Dealer::hit(){
+int Dealer::hit(Card newCard, bool flipUp){
+    if(flipUp){
+        newCard.flipCard();
+    }
+    hand.addCard(newCard);
     
     return 0;
 }
 
 int Dealer::stay(){
     return 0;
+}
+
+Deck* Dealer::returnDeck(){
+    return &(this->deck);
+}
+
+Hand Dealer::returnHand(){
+    return hand;
 }

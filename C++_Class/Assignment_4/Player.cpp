@@ -14,6 +14,9 @@
 #include "Player.h"
 
 Player::Player() {
+    this->money=0;
+    this->betAmount=0;
+    
 }
 
 Player::Player(const Player& orig) {
@@ -23,16 +26,39 @@ Player::Player(const Player& orig) {
 Player::~Player() {
 }
 
-int Player::hit(){
+int Player::hit(Card newCard){
+    newCard.flipCard();
+    hand.addCard(newCard);
     return 0;
 }
 int Player::stay(){
     return 0;
 }
-int Player::bet(){
-    return 0;
+int Player::bet(int bet){
+    if(bet<=this->money && bet>0){
+        this->betAmount=bet;
+        return 0;
+    }
+    else{
+        std::cout<<"You bet an invalid amount"<<std::endl;
+        return -1;
+    }
 }
 int Player::checkHand(){
+    
+    return hand.checkHand();
+}
+
+int Player::checkMoney(){
+    return money;
+}
+
+int Player::addMoney(int funds){
+    this->money+=funds;
+    this->betAmount=0;//reset bet
     return 0;
 }
 
+Hand Player::returnHand(){
+    return hand;
+}

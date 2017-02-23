@@ -77,3 +77,7 @@ int Card::flipCard(){
     this->faceUp=true;
     return 0;
 }
+
+bool Card::isAce(){
+    return this->ace;
+}
