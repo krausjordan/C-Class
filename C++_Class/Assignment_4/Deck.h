@@ -33,6 +33,8 @@ public:
     Card drawCard();
     int printDeck();
     int getSize();
+    int make52CardDeck();
+    int clearDeck();
 private:
     std::vector<Card> deck;
     int size;

@@ -27,6 +27,8 @@ public:
     int addCard(Card newCard);
     int removeCard();
     int printHand();
+    int flipHand();
+    int clearHand();
 private:
     std::vector<Card> hand;
     int size;

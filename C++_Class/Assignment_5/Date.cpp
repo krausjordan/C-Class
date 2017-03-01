@@ -86,3 +86,30 @@ std::string Date::date_to_string(){
     
     return date;
 }
+
+std::ostream& operator<<(std::ostream& os, const Date& date){
+    
+    os<<date.month<<"/"<<date.day<<"/"<<date.year;
+    //os<<"hi";
+    return os;
+}
+
+std::istream& operator>>(std::istream& is, Date& date){
+    
+    int newMonth, newDay, newYear;
+    char ch1, ch2;
+
+    std::cout<<"Enter new date in MM/DD/YYYY format"<<std::endl;
+    
+    if(is>> newMonth >>ch1 >> newDay >> ch2 >> newYear)
+    {
+        if(ch1== '/' && ch2=='/'){
+            date.set_Date(newMonth, newDay, newYear);
+        }
+        else{
+            std::cout<<"Invalid date format"<<std::endl;
+        }
+    }
+
+    return is;
+}

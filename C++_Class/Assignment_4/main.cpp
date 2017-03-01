@@ -42,15 +42,22 @@ int main(int argc, char** argv) {
     //testHand.printHand();
     //cout<<testDeck.getSize()<<endl;
     
+   /* Hand hand=Hand();
+    hand.addCard(Card(11,Suit(0),true,true,true,"Ace"));
+    hand.addCard(Card(11,Suit(1),true,true,true,"Ace"));
+    hand.addCard(Card(11,Suit(2),true,true,true,"Ace"));
+    hand.addCard(Card(11,Suit(3),true,true,true,"Ace"));
     
+    int ace =hand.checkHand();
+    std::cout<<ace<<endl;*/
+    
+    
+    //Sets up and plays a game of BlackJack
     Player testPlayer= Player();
     Dealer testDealer= Dealer();
     Player* playerPtr=&testPlayer;
     Dealer* dealerPtr=&testDealer;
-//    Deck temp=testDealer.returnDeck();
-//    temp.printDeck();
-//    (testDealer.returnDeck()).printDeck();
-    //BlackJackGame testGame(testDealer,testPlayer);
+
     BlackJackGame testGame(dealerPtr,playerPtr);
     BlackJackGame* gamePtr=&testGame;
     GameInterface interface(gamePtr);

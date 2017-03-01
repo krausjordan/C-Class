@@ -15,6 +15,8 @@
 #define DATE_H
 
 #include <string>
+#include <iostream>
+//#include <ostream>
 
 class Date {
 public:
@@ -31,6 +33,8 @@ public:
     int set_Date(int new_month, int new_day, int new_year);
     int print_Date();
     std::string date_to_string();
+    friend std::ostream& operator<<(std::ostream& os, const Date& date);
+    friend std::istream& operator>>(std::istream& is, Date& date);
 private:
     int month;
     int day;

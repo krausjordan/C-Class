@@ -27,7 +27,9 @@ public:
     int checkHand();
     int checkMoney();
     int addMoney(int funds);
-    Hand returnHand();
+    Hand* returnHand();
+    int bust();
+    int winBet();
 private:
     Hand hand;
     int money;

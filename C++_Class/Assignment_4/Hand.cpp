@@ -24,6 +24,7 @@ Hand::Hand(const Hand& orig) {
 Hand::~Hand() {
 }
 
+//Returns the value of a hand. checks for highest value possible with ace.
 int Hand::checkHand(){
     int total=0;
     for (auto iter = hand.begin(); iter != hand.cend(); ++iter){
@@ -45,8 +46,7 @@ int Hand::checkHand(){
             }
         }
     
-    
-        //Check if Aces cause busts
+        //Check if Aces cause busts. If it does, try different combos of aces being worth 1 rather than 11
         int max = 0;
         int aceCount=numAces;
         if(numAces>0){
@@ -55,17 +55,31 @@ int Hand::checkHand(){
                 int tempAceCount=0;
                 for(auto iter = hand.begin(); iter!= hand.cend(); ++iter){
                     if((*iter).isVisible()){
-                        if((*iter).isAce()&&(aceCount<tempAceCount++)){//Should affect all aces at first, then all minus 1 ace, all the way down to no aces
-                            temp++;
+                        if((*iter).isAce()){
+                            if((aceCount>tempAceCount)){//Should affect all aces at first, then all minus 1 ace, all the way down to no aces
+                                //std::cout<<"less than tempcount"<<std::endl;
+                                temp++;
+                                tempAceCount++;
+                            }
+                            else{
+                                temp+=(*iter).getValue();
+                                //std::cout<<"more than tempcount"<<std::endl;
+                            }
                         }
-                        temp+=(*iter).getValue();
+                        else{
+                            //std::cout<<"not an ace"<<std::endl;
+                            temp+=(*iter).getValue();
+                        }
                     }
                 }
+                //std::cout<<temp<<std::endl;
                 if(temp>max && temp<22){
+                    std::cout<<temp<<std::endl;
                     max=temp;
                 }
                 aceCount--;
             }
+            
             total=max;
             
         }
@@ -74,6 +88,7 @@ int Hand::checkHand(){
     return total;
 }
 
+//Adds card to hand
 int Hand::addCard(Card newCard){
     //size+=1;
     hand.push_back(newCard);
@@ -81,16 +96,38 @@ int Hand::addCard(Card newCard){
     return 0;
 }
 
+//Removes last card in hand
 int Hand::removeCard(){
     hand.pop_back();
+    size=hand.size();
     return 0;
 }
 
+//Prints cards in hand out
 int Hand::printHand(){
-    std::cout<<"Print Hand"<<std::endl;
+    //std::cout<<"*******************"<<std::endl;
     for (auto iter = hand.begin(); iter != hand.cend(); ++iter){
         (*iter).printCard();
     }
-    std::cout<<"Done Printing Hand"<<std::endl;
+    //std::cout<<"*******************"<<std::endl;
+    return 0;
+}
+
+//Sets all cards to face up
+int Hand::flipHand(){
+    std::cout<<"Flipping Hand"<<std::endl;
+    for (auto iter = hand.begin(); iter != hand.cend(); ++iter){
+        (*iter).flipCard();
+    }
+    
+    return 0;
+}
+
+//Removes all cards from hand
+int Hand::clearHand(){
+    while(hand.size()!=0){
+        removeCard();
+    }
+    
     return 0;
 }

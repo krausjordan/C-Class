@@ -26,7 +26,8 @@ public:
     int hit(Card newCard, bool flipUp);
     int stay();
     Deck* returnDeck();
-    Hand returnHand();
+    Hand* returnHand();
+    int flipHand();
 private:
     Hand hand;
     Deck deck;

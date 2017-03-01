@@ -24,10 +24,12 @@ Dealer::Dealer(const Dealer& orig) {
 Dealer::~Dealer() {
 }
 
+//Calculates hand value
 int Dealer::checkHand(){
     return hand.checkHand();
 }
 
+//Adds new card to hand, sets it's face up status
 int Dealer::hit(Card newCard, bool flipUp){
     if(flipUp){
         newCard.flipCard();
@@ -37,14 +39,23 @@ int Dealer::hit(Card newCard, bool flipUp){
     return 0;
 }
 
+//Not really used, implemented at game level
 int Dealer::stay(){
     return 0;
 }
 
+//Returns pointer to deck
 Deck* Dealer::returnDeck(){
     return &(this->deck);
 }
 
-Hand Dealer::returnHand(){
-    return hand;
+//Returns pointer to Hand
+Hand* Dealer::returnHand(){
+    return &(this->hand);
+}
+
+//Flips hand face up
+int Dealer::flipHand(){
+    hand.flipHand();
+    return 0;
 }

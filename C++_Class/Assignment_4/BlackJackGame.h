@@ -25,13 +25,15 @@ public:
     BlackJackGame(const BlackJackGame& orig);
     virtual ~BlackJackGame();
     BlackJackGame(Dealer *dealer, Player *player);
-    int Play();
     Player* returnPlayer();
     Dealer* returnDealer();
     Deck* returnDeck();
     int dealHands();
     int playerHit();
     bool checkBust(int handValue);
+    int dealerHit();
+    int checkPlayerWin();
+    int payOut(int outcome);
 private:
     Dealer* dealer;
     Player* player;

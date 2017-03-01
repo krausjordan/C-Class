@@ -34,6 +34,7 @@ Card::Card(int value,Suit suit,bool faceUp,bool ace,bool faceCard,std::string fa
     
 }
 
+//Returns Face Card name
 std::string Card::getFaceValue(){
     if(this->isFaceCard())
         return faceValue;
@@ -41,6 +42,8 @@ std::string Card::getFaceValue(){
         return std::to_string(this->getValue());
 }
 
+
+//Mutators
 int Card::getValue(){
     return value;
 }
@@ -57,11 +60,21 @@ bool Card::isFaceCard(){
     return faceCard;
 }
 
-int Card::printCard(){
-    
-    std::cout<<printSuit(this->suit)<<"  "<<this->value<<"  "<<this->getFaceValue()<<std::endl;
+bool Card::isAce(){
+    return this->ace;
 }
 
+//Prints Card
+int Card::printCard(){
+    if(faceUp){
+        std::cout<<printSuit(this->suit)<<"  "<<this->value<<"  "<<this->getFaceValue()<<std::endl;
+    }
+    else{
+        std::cout<<" Face Down Card"<<std::endl;
+    }
+}
+
+//Prints Suit
 std::string Card::printSuit(int suit){
     switch(suit){
         case 0: return "Spades";
@@ -73,11 +86,10 @@ std::string Card::printSuit(int suit){
     }
 }
 
+//Sets Card face up
 int Card::flipCard(){
     this->faceUp=true;
     return 0;
 }
 
-bool Card::isAce(){
-    return this->ace;
-}
+

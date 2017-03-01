@@ -27,51 +27,58 @@ GameInterface::GameInterface(BlackJackGame *aGame){
     this->aGame=aGame;
 }
 
+// Handle player intput while playing a game. Handles Dealing initial cards and 
+//   player/dealer hits. Calls functions to determine game winner
 int GameInterface::waitForPlayerAction(){
     cout<<"Dealing starting Hands"<<endl;
     (*aGame).dealHands();
     displayTable();
     bool keepPlaying=true;
     while(keepPlaying){
-        cout<<"Choose: (0) Hit, (1) Stay, (2) See Dealer Hand, (3) See Hand"<<endl;
+        cout<<"###################################################################"<<endl;
+        cout<<"Choose:  Hit(1), Stay(2),  See Dealer Hand(3),  See Personal Hand(4)"<<endl;
         int choice=getAction();
         cout<<"Your choice was: "<<choice<<endl;
 
         switch(choice){
-            case 0:{
+            case 1:{
                 cout<<"Hit:"<<endl;
                 int handValue=(*aGame).playerHit();
-                (*(*aGame).returnPlayer()).returnHand().printHand();
+                displayTable();
                 keepPlaying=!(*aGame).checkBust(handValue);//if bust stop playing
                 break;}
-            case 1:{
+            case 2:{
                 cout<<"Stay"<<endl;
-                //(*(*aGame).returnPlayer()).bet(bet);
-                //waitForPlayerAction();
+                (*aGame).dealerHit();
+                displayTable();
+                int outcome=(*aGame).checkPlayerWin();
+                (*aGame).payOut(outcome);
+                keepPlaying=false;
                 break;
             }
-            case 2:{
-                cout<<"Thanks for playing"<<endl;
+            case 3:{
+                cout<<"****Dealer's Hand****"<<endl;
+                (*(*(*aGame).returnDealer()).returnHand()).printHand();
                 return 0;
             }
-            case 3:{
-                (*(*aGame).returnPlayer()).returnHand().printHand();
+            case 4:{
+                cout<<"****Player's Hand****"<<endl;
+                (*(*(*aGame).returnPlayer()).returnHand()).printHand();
                 break;
             }
             default:{
-                cout<<"Please choose 1, 2, or 3"<<endl;
+                cout<<"Please choose 1, 2, 3, or 4"<<endl;
             }
         }//end while
 
     }
     
-    
-    
-    
     return 0;
     
 }
 
+
+// Handles Initial interface where player can add money, play a game, or exit
 int GameInterface::displayWelcome(){
     cout<<"################################"<<endl;
     cout<<"Welcome to the BlackJack Game"<<endl;
@@ -80,7 +87,7 @@ int GameInterface::displayWelcome(){
         cout<<"-------------------------------------"<<endl;
         cout<<"You currently have $"<<(*(*aGame).returnPlayer()).checkMoney()<<endl;
 
-        cout<<"Choose: (1) AddMoney, (2) Play, (3) Exit"<<endl;
+        cout<<"Choose:  AddMoney(1),  Play(2),  Exit(3)"<<endl;
         int choice=getAction();
 
         cout<<"Your choice was: "<<choice<<endl;
@@ -121,31 +128,38 @@ int GameInterface::displayWelcome(){
     return 0;
 }
 
+
+// Prints out dealers hand and players hand and their values
 int GameInterface::displayTable(){
-    cout<<"Dealer Hand"<<endl;
-    (*(*aGame).returnDealer()).returnHand().printHand();
-    cout<<"Dealer Total: "<<((*(*aGame).returnDealer()).checkHand())<<endl;
-    cout<<"Player Hand"<<endl;
-    (*(*aGame).returnPlayer()).returnHand().printHand();
+    cout<<"*********************"<<endl;
+    cout<<"*****Dealer Hand*****"<<endl;
+    (*(*(*aGame).returnDealer()).returnHand()).printHand();
+    cout<<"*****Dealer Total: "<<((*(*aGame).returnDealer()).checkHand())<<"  *****"<<endl;
+    cout<<"*********************"<<endl;
+    cout<<"*****Player Hand*****"<<endl;
+    (*(*(*aGame).returnPlayer()).returnHand()).printHand();
     //int x=((*(*aGame).returnPlayer()).checkHand());
-    cout<<"Player Total: "<<((*(*aGame).returnPlayer()).checkHand())<<endl;
+    cout<<"*****Player Total: "<<((*(*aGame).returnPlayer()).checkHand())<<"  *****"<<endl;
+    cout<<"*********************"<<endl;
     
     return 0;
 }
 
+// Handled in BlackJackGame
 int GameInterface::displayWinner(){
     return 0;
 }
 
+// Handles player bet by calling Player's bet function
 int GameInterface::getBet(){
     cout<<"Enter Bet:"<<endl;
-    int bet;
-    cin>>bet;
+    int bet=getAction();
     (*(*aGame).returnPlayer()).bet(bet);
     
     return bet;
 }
 
+// Handles input and checks for non int values
 int GameInterface::getAction(){
     int x;
     while(!(cin >> x)){

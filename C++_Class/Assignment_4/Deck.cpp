@@ -16,6 +16,58 @@
 
 Deck::Deck() {
     //Makes normal 52 card deck
+    clearDeck();
+    make52CardDeck();
+}
+
+Deck::Deck(const Deck& orig){
+    *this=orig;
+}
+
+Deck::~Deck() {
+}
+
+Deck::Deck(int size){
+    size=size;
+    //deck=new Card[size];
+}
+
+// Shuffles cards in deck randomly
+int Deck::shuffle(){                                      
+    std::cout<<"Shuffle Deck"<<std::endl;
+    std::random_shuffle(deck.begin(), deck.end());
+    //this->printDeck(); 
+    return 0;
+}
+
+// Prints all cards in deck
+int Deck::printDeck(){
+    std::cout<<"Print Deck"<<std::endl;
+    for (auto iter = deck.begin(); iter != deck.cend(); ++iter){
+        (*iter).printCard();
+    }
+    std::cout<<"Done Printing Deck"<<std::endl;
+    return 0;
+}
+
+//Takes "top" card off deck and returns it. Removes this card from deck
+Card Deck::drawCard(){
+    //std::cout<<"Draw Card"<<std::endl;
+    Card temp = deck.back();
+    deck.pop_back();
+    //temp.printCard();
+    size=deck.size();
+    //std::cout<<"Done Drawing card"<<std::endl;
+    return temp;
+}
+
+//Returns size of deck
+int Deck::getSize(){
+    return size;
+}
+
+//Makes normal 52 card deck. Face cards are worth 10, Aces 11
+int Deck::make52CardDeck(){
     std::cout<<"Making normal deck"<<std::endl;
     size=52;
     //deck=new Card[size];
@@ -47,44 +99,11 @@ Deck::Deck() {
     std::cout<<"Deck is now shuffled"<<std::endl;
 }
 
-Deck::Deck(const Deck& orig){
-    *this=orig;
-}
-
-Deck::~Deck() {
-}
-
-Deck::Deck(int size){
-    size=size;
-    //deck=new Card[size];
-}
-
-int Deck::shuffle(){                                      
-    std::cout<<"Shuffle Deck"<<std::endl;
-    std::random_shuffle(deck.begin(), deck.end());
-    //this->printDeck(); 
-    return 0;
-}
-
-int Deck::printDeck(){
-    std::cout<<"Print Deck"<<std::endl;
-    for (auto iter = deck.begin(); iter != deck.cend(); ++iter){
-        (*iter).printCard();
+//Removes all cards from deck
+int Deck::clearDeck(){
+    while(deck.size()!=0){
+        drawCard();
     }
-    std::cout<<"Done Printing Deck"<<std::endl;
+    
     return 0;
-}
-
-Card Deck::drawCard(){
-    //std::cout<<"Draw Card"<<std::endl;
-    Card temp = deck.back();
-    deck.pop_back();
-    //temp.printCard();
-    size=deck.size();
-    //std::cout<<"Done Drawing card"<<std::endl;
-    return temp;
-}
-
-int Deck::getSize(){
-    return size;
 }
