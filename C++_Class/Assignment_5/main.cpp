@@ -25,10 +25,13 @@ int main(int argc, char** argv) {
     
     Date x = Date(2,2,2);
     Date y = Date(1,1,1);
+    std::cout<<"Print out date using << operator"<<std::endl;
     std::cout<<y<<std::endl;
     
+    std::cout<<"Use cin and >> operator to set the date"<<std::endl;
     std::cin>>y;
     
+    std::cout<<"Prove date changed"<<std::endl;
     std::cout<<y<<std::endl;
     
     return 0;

@@ -90,7 +90,6 @@ std::string Date::date_to_string(){
 std::ostream& operator<<(std::ostream& os, const Date& date){
     
     os<<date.month<<"/"<<date.day<<"/"<<date.year;
-    //os<<"hi";
     return os;
 }
 
@@ -107,8 +106,11 @@ std::istream& operator>>(std::istream& is, Date& date){
             date.set_Date(newMonth, newDay, newYear);
         }
         else{
-            std::cout<<"Invalid date format"<<std::endl;
+            std::cout<<"Invalid date format. Date not set."<<std::endl;
         }
+    }
+    else{
+        std::cout<<"Invalid date format. Date not set."<<std::endl;
     }
 
     return is;
