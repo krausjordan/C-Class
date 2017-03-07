@@ -87,12 +87,14 @@ std::string Date::date_to_string(){
     return date;
 }
 
+// Override the << operator to print out the date in MM/DD/YYYY format
 std::ostream& operator<<(std::ostream& os, const Date& date){
     
     os<<date.month<<"/"<<date.day<<"/"<<date.year;
     return os;
 }
 
+// Override the >> operator to 
 std::istream& operator>>(std::istream& is, Date& date){
     
     int newMonth, newDay, newYear;
