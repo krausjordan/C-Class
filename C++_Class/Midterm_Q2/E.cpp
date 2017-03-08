@@ -24,10 +24,12 @@ E::E(const E& orig) {
 E::~E() {
 }
 
+// Set E value
 void E::setE(int newValue){
     this->eData=newValue;
 }
 
+// Return the E value
 int E::getE() const{
     return this->eData;
 }

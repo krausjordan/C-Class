@@ -24,10 +24,12 @@ C::C(const C& orig) {
 C::~C() {
 }
 
+// Returns the C value
 int C::getC() const{
     return this->cData;
 }
 
+// Sets the object's C value
 void C::setC(int newValue){
     this->cData=newValue;
 }

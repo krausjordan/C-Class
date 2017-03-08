@@ -24,10 +24,12 @@ B::B(const B& orig) {
 B::~B() {
 }
 
+// Sets the object's B value
 void B::setB(int newValue){
     this->bData=newValue;
 }
 
+// Returns the object's B value
 int B::getB() const{
     return bData;
 }
