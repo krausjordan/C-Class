@@ -25,12 +25,12 @@ public:
     ATM(int newID, float startBalance,float startThreshold=200);
     //void notify();
     float checkBalance();
-    int getID();
+    int getID() const;
     void setID(int newID);
     void setBalance(float newBalance);
     void addMoney(float money);
     float subtractMoney(float money);
-    float getThreshold();
+    float getThreshold() const;
     void setThreshold(float newThreshold);
 private:
     int ID;

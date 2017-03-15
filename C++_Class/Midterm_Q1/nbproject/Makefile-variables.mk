@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux
-CND_ARTIFACT_NAME_Debug=midterm
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/midterm
+CND_ARTIFACT_NAME_Debug=midterm_q1
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/midterm_q1
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
-CND_PACKAGE_NAME_Debug=midterm.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/midterm.tar
+CND_PACKAGE_NAME_Debug=midtermq1.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/midtermq1.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux
-CND_ARTIFACT_NAME_Release=midterm
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/midterm
+CND_ARTIFACT_NAME_Release=midterm_q1
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/midterm_q1
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux/package
-CND_PACKAGE_NAME_Release=midterm.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/midterm.tar
+CND_PACKAGE_NAME_Release=midtermq1.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/midtermq1.tar
 #
 # include compiler specific variables
 #

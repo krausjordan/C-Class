@@ -14,6 +14,8 @@
 #ifndef RECTANGULARSOLID_H
 #define RECTANGULARSOLID_H
 
+#include <iostream>
+
 class RectangularSolid {
 public:
     RectangularSolid();

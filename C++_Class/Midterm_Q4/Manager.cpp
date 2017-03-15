@@ -23,9 +23,8 @@ Manager::Manager(const Manager& orig) {
 Manager::~Manager() {
 }
 
+// Update function is called when ATM object is below threshold. This realizes Listener's Update function
 void Manager::update(int id, float currentBalance){
-    cout<<"Manager has been updated that ATM "<<id<<" has a balance of $"<<currentBalance<<" and needs to be replenished"<<endl;
-    
-    
+    cout<<"Manager has been updated that ATM "<<id<<" has a balance of $"<<currentBalance<<" and needs to be replenished"<<endl; 
 }
 

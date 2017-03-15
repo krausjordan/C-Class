@@ -23,14 +23,17 @@ Publisher::Publisher(const Publisher& orig) {
 Publisher::~Publisher() {
 }
 
+//Adds a listener pointer to the list
 void Publisher::attach(Listener* newListener){
     this->listeners.push_back( newListener );
 }
 
+//Removes a listener pointer from the list
 void Publisher::detach(Listener* oldListener){
     this->listeners.remove( oldListener );
 }
 
+//Notifies all listeners of the update
 void Publisher::notify(int id, float currentBalance){
     std::list<Listener *>::iterator i;
     for( i = listeners.begin(); i != listeners.end(); i++ ){

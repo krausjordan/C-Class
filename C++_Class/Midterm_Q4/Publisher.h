@@ -25,7 +25,6 @@ public:
     void attach(Listener *newListener);
     void detach(Listener *oldListener); 
     void notify(int id, float currentBalance);
-
 private:
     std::list<Listener *> listeners;
 };

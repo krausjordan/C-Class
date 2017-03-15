@@ -24,6 +24,7 @@ TransactionLogger::TransactionLogger(const TransactionLogger& orig) {
 TransactionLogger::~TransactionLogger() {
 }
 
+//Update function is called when ATM object is below threshold. This realizes Listener's update function
 void TransactionLogger::update(int id, float currentBalance){
     cout<<"-------------------------------------------------------------------"<<endl;
     cout<<"Transaction Logger has been updated"<<endl;
@@ -33,12 +34,12 @@ void TransactionLogger::update(int id, float currentBalance){
     
 }
 
-// Get current date/time, format is YYYY-MM-DD.HH:mm:ss
+//Returns current date and time, format is MM/DD/YYYY  HH:MM:SS
 std::string  TransactionLogger::getCurrentDateTime() {
     time_t now = time(0);
     struct tm tstruct;
     char buffer[80];
     tstruct = *localtime(&now);
-    strftime(buffer, sizeof(buffer), "%Y-%m-%d.%X", &tstruct);
+    strftime(buffer, sizeof(buffer), "%m/%d/%Y  %X", &tstruct);
     return buffer;
 }

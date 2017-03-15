@@ -57,19 +57,28 @@ float RectangularSolid::getSurfaceArea() const {
 
 // Sets the object's height
 int RectangularSolid::setHeight(float newHeight){
-    this->height=newHeight;
+    if(newHeight>0)
+        this->height=newHeight;
+    else
+        std::cout<<newHeight<<" is not a valid Height"<<std::endl;
     return 0;
 }
 
 // Sets the object's length
 int RectangularSolid::setLength(float newLength){
-    this->length=newLength;
+    if(newLength>0)
+        this->length=newLength;
+    else
+        std::cout<<newLength<<" is not a valid Length"<<std::endl;
     return 0;
 }
 
 // Sets the object's width
 int RectangularSolid::setWidth(float newWidth){
-    this->width=newWidth;
+    if(newWidth>0)
+        this->width=newWidth;
+    else
+        std::cout<<newWidth<<" is not a valid Height"<<std::endl;
     return 0;
 }
 

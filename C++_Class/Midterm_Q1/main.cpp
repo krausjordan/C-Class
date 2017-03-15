@@ -36,6 +36,8 @@ int main(int argc, char** argv) {
     cout<<"Square side"<<endl;
     cout<<square.getHeight()<<endl;
     
+    square.setHeight(-1);
+    
     return 0;
 }
 
