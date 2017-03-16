@@ -29,7 +29,7 @@ public:
     int addMoney(int funds);
     Hand* returnHand();
     int bust();
-    int winBet();
+    int winBet(int multiplier=1);
 private:
     Hand hand;
     int money;

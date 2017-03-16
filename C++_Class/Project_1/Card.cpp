@@ -68,7 +68,8 @@ bool Card::isAce(){
 //Prints Card
 int Card::printCard(){
     if(faceUp){
-        std::cout<<printSuit(this->suit)<<"  "<<this->value<<"  "<<this->getFaceValue()<<std::endl;
+        //std::cout<<printSuit(this->suit)<<"  "<<this->getFaceValue()<<std::endl;
+        std::cout<<this->getFaceValue()<<" of "<<printSuit(this->suit)<<std::endl;
     }
     else{
         std::cout<<" Face Down Card"<<std::endl;

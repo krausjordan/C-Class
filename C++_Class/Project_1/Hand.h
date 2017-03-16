@@ -31,6 +31,7 @@ public:
     int flipHand();
     int clearHand();
     Card* returnCard(int index);
+    std::vector<Card> returnHand();
 private:
     std::vector<Card> hand;
     int size;

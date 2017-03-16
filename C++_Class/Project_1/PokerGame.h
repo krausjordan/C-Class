@@ -28,17 +28,18 @@ public:
     Deck* returnDeck();
     int dealHands();
     int playerHit();
-    bool checkBust(int handValue);
     int checkPlayerWin();
-    int payOut(int outcome);
-    bool checkRoyalFlush();
-    bool checkFlush();
-    bool checkStraight();
-    bool checkRoyalStraight();
-    bool checkFourOfAKind();
-    bool checkThreeOfAKind();
-    bool checkTwoOfAKind();
-    bool checkFullHouse();
+    int resetGame();
+    bool checkRoyalFlush(bool payout=true);
+    bool checkFlush(bool payout=true);
+    bool checkStraight(bool payout=true);
+    bool checkRoyalStraight(bool payout=true);
+    bool checkFourOfAKind(bool payout=true);
+    bool checkThreeOfAKind(bool payout=true);
+    bool checkTwoOfAKind(bool payout=true);
+    bool checkFullHouse(bool payout=true);
+    bool checkTwoPair(bool payout=true);
+    bool checkStraightFlush(bool payout=true);
 private:
     Player* player;
     Deck* deck;

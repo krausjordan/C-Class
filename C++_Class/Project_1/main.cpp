@@ -16,7 +16,6 @@
 #include "Deck.h"
 #include "Hand.h"
 #include "Player.h"
-#include "Dealer.h"
 #include "PokerGame.h"
 #include "GameInterface.h"
 #include "Card.h"

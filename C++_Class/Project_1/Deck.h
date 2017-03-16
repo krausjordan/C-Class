@@ -14,6 +14,9 @@
 #ifndef DECK_H
 #define DECK_H
 
+#define  MAX_SUITS 4
+#define  MAX_CARDS_IN_SUIT 13
+
 #include "Card.h"
 #include <iostream>
 #include <vector>
@@ -35,6 +38,7 @@ public:
     int getSize();
     int make52CardDeck();
     int clearDeck();
+    int makeBiasedDeck();
 private:
     std::vector<Card> deck;
     int size;

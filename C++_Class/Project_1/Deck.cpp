@@ -18,6 +18,7 @@ Deck::Deck() {
     //Makes normal 52 card deck
     clearDeck();
     make52CardDeck();
+    //makeBiasedDeck();
 }
 
 Deck::Deck(const Deck& orig){
@@ -106,4 +107,14 @@ int Deck::clearDeck(){
     }
     
     return 0;
+}
+
+//Gives a Royal Flush 
+int Deck::makeBiasedDeck(){
+    deck.push_back(Card(11,Suit::Hearts,false,false,true,"Jack"));
+    deck.push_back(Card(12,Suit::Hearts,false,false,true,"Queen"));
+    deck.push_back(Card(13,Suit::Hearts,false,false,true,"King"));
+    deck.push_back(Card(1,Suit::Hearts,false,true,true,"Ace"));
+    deck.push_back(Card(10,Suit::Hearts,false,false));
+    size=5;
 }

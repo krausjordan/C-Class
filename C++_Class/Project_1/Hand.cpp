@@ -106,7 +106,9 @@ int Hand::removeCard(){
 //Prints cards in hand out
 int Hand::printHand(){
     //std::cout<<"*******************"<<std::endl;
+    int count=0;
     for (auto iter = hand.begin(); iter != hand.cend(); ++iter){
+        std::cout<< count++<< " : ";
         (*iter).printCard();
     }
     //std::cout<<"*******************"<<std::endl;
@@ -140,4 +142,8 @@ int Hand::replaceCard(int index, Card newCard){
     hand[index]=newCard;
     hand[index].setReplaceable(false);
     return 0;
+}
+
+std::vector<Card> Hand::returnHand(){
+    return hand;
 }

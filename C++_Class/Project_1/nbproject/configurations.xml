@@ -5,7 +5,6 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>Card.h</itemPath>
-      <itemPath>Dealer.h</itemPath>
       <itemPath>Deck.h</itemPath>
       <itemPath>GameInterface.h</itemPath>
       <itemPath>Hand.h</itemPath>
@@ -20,7 +19,6 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>Card.cpp</itemPath>
-      <itemPath>Dealer.cpp</itemPath>
       <itemPath>Deck.cpp</itemPath>
       <itemPath>GameInterface.cpp</itemPath>
       <itemPath>Hand.cpp</itemPath>
@@ -56,10 +54,6 @@
       <item path="Card.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Card.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Dealer.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Dealer.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Deck.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -108,10 +102,6 @@
       <item path="Card.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Card.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Dealer.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Dealer.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Deck.cpp" ex="false" tool="1" flavor2="0">
       </item>

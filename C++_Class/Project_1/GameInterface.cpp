@@ -43,16 +43,20 @@ int GameInterface::waitForPlayerAction(){
         switch(choice){
             case 1:{
                 replaceCards();
-                //int handValue=(*aGame).playerHit();
-                //displayTable();
-                //keepPlaying=!(*aGame).checkBust(handValue);//if bust stop playing
-                break;}
-            case 2:{
-                cout<<"Stay"<<endl;
-                //(*aGame).dealerHit();
+                
+                //Flip hand and display table
+                cout<<"New cards are:"<<endl;
+                (*(*(*aGame).returnPlayer()).returnHand()).flipHand();
                 displayTable();
                 int outcome=(*aGame).checkPlayerWin();
-                (*aGame).payOut(outcome);
+                (*aGame).resetGame();
+                keepPlaying=false;
+                break;}
+            case 2:{
+                cout<<"Keeping Hand"<<endl;
+                displayTable();
+                int outcome=(*aGame).checkPlayerWin();
+                (*aGame).resetGame();
                 keepPlaying=false;
                 break;
             }
@@ -77,19 +81,25 @@ int GameInterface::replaceCards(){
     
     int choice=getAction();
     while(choice>0){
-        cout<<"Pick card index to replace (0-4)?:"<<endl;
+        cout<<"Pick card index to replace (0-4)? (enter -1 to keep hand):"<<endl;
         int cardchoice=getAction();
         if(cardchoice<0 && cardchoice>4){
             cout<<"Bad choice. Choose 0 to keep hand."<<endl;
         }
+        else if(cardchoice==-1){
+            choice=0;//Keep current hand
+        }
         else{
             bool replaceable= (*(*(*(*aGame).returnPlayer()).returnHand()).returnCard(cardchoice)).getReplaceable();
+            
             if(replaceable){
                 //Remove card from hand, add new card to hand, set new card to not replaceable
                 Card newCard= (*(*aGame).returnDeck()).drawCard();
+                //newCard.flipCard();//set card faceup
                 (*(*(*aGame).returnPlayer()).returnHand()).replaceCard(cardchoice,newCard);
-                cout<<"Card is not replaceable "<<(*(*(*(*aGame).returnPlayer()).returnHand()).returnCard(cardchoice)).getReplaceable()<<endl;
+                //cout<<"Card is not replaceable "<<(*(*(*(*aGame).returnPlayer()).returnHand()).returnCard(cardchoice)).getReplaceable()<<endl;
                 choice--;
+                displayTable();
             }
             else{
                 cout<<"This card is not replaceable"<<endl;
@@ -101,7 +111,7 @@ int GameInterface::replaceCards(){
 // Handles Initial interface where player can add money, play a game, or exit
 int GameInterface::displayWelcome(){
     cout<<"################################"<<endl;
-    cout<<"Welcome to the BlackJack Game"<<endl;
+    cout<<"Welcome to the Poker Game"<<endl;
     
     while(true){
         cout<<"-------------------------------------"<<endl;
@@ -115,9 +125,11 @@ int GameInterface::displayWelcome(){
         switch(choice){
             case 1:{
                 cout<<"How much money:"<<endl;
-                int funds;
-                cin>>funds;
-                (*(*aGame).returnPlayer()).addMoney(funds);
+                int funds=getAction();
+                if(funds>0)
+                    (*(*aGame).returnPlayer()).addMoney(funds);
+                else
+                    cout<<"Must add a positive number"<<endl;
                 break;}
             case 2:{
                 if((*(*aGame).returnPlayer()).checkMoney()<=0){
@@ -126,12 +138,17 @@ int GameInterface::displayWelcome(){
                 }
                 int x=1;
                 while(x!=0){
-                    cout<<"Enter Bet(int between 1 and your max money):"<<endl;
-                    int bet;
-                    cin>>bet;
-                    x=(*(*aGame).returnPlayer()).bet(bet);
+                    cout<<"Enter Bet(int between 1 and 5):"<<endl;
+                    int bet=getAction();
+                    if(bet>0 && bet<6 && bet<=(*(*aGame).returnPlayer()).checkMoney()){
+                        x=(*(*aGame).returnPlayer()).bet(bet);
+                        waitForPlayerAction();
+                    }
+                    else
+                        cout<<"Not a valid bet. Try again"<<endl;
+                    //x=(*(*aGame).returnPlayer()).bet(bet);
                 }   
-                waitForPlayerAction();
+                //waitForPlayerAction();
                 break;
             }
             case 3:{
@@ -152,14 +169,11 @@ int GameInterface::displayWelcome(){
 // Prints out dealers hand and players hand and their values
 int GameInterface::displayTable(){
     cout<<"*********************"<<endl;
-    cout<<"*****Dealer Hand*****"<<endl;
-    //(*(*(*aGame).returnDealer()).returnHand()).printHand();
-    //cout<<"*****Dealer Total: "<<((*(*aGame).returnDealer()).checkHand())<<"  *****"<<endl;
-    cout<<"*********************"<<endl;
     cout<<"*****Player Hand*****"<<endl;
+    cout<<"Index  Value   Suit"<<endl;
+    cout<<"-------------------"<<endl;
+    
     (*(*(*aGame).returnPlayer()).returnHand()).printHand();
-    //int x=((*(*aGame).returnPlayer()).checkHand());
-    cout<<"*****Player Total: "<<((*(*aGame).returnPlayer()).checkHand())<<"  *****"<<endl;
     cout<<"*********************"<<endl;
     
     return 0;

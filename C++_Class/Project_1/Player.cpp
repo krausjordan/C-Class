@@ -43,6 +43,7 @@ int Player::stay(){
 int Player::bet(int bet){
     if(bet<=this->money && bet>0){
         this->betAmount=bet;
+        //this->money-=bet;//Subtract bet from player's money
         return 0;
     }
     else{
@@ -82,8 +83,8 @@ int Player::bust(){
 }
 
 //Player gains the bet money
-int Player::winBet(){
-    this->money+=this->betAmount;
+int Player::winBet(int multiplier){
+    this->money+= ((this->betAmount)*multiplier);
     this->betAmount=0;
     return 0;
 }
