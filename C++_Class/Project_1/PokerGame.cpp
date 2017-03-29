@@ -24,7 +24,7 @@ PokerGame::PokerGame(const PokerGame& orig) {
 PokerGame::~PokerGame() {
 }
 
-//Constructor with dealer and player
+//Constructor with deck and player
 PokerGame::PokerGame(Deck *deck,Player *player){
     std::cout<<"Make Game"<<std::endl;
     this->deck=deck;
@@ -43,7 +43,7 @@ Deck* PokerGame::returnDeck(){
     return deck;
 }
 
-//Deals 5 cards to the player and dealer
+//Deals 5 cards to the player 
 int PokerGame::dealHands(){
     for(int i=0; i<5;i++){
         (*player).hit(((*deck).drawCard()));
@@ -60,9 +60,8 @@ int PokerGame::playerHit(){
 
 
 
-//Calculates if player beat the dealer
+//Calculates if player has a winning hand
 int PokerGame::checkPlayerWin(){
-    int player_total=(*player).checkHand();
     
     bool win=false;
     while(true){
@@ -70,27 +69,28 @@ int PokerGame::checkPlayerWin(){
         win=checkRoyalFlush();
         if(win)
             break;
-        
+        //check if straight flush
         win=checkStraightFlush();
         if(win)
             break;
-        
+        //check if 4 of a kind
         win=checkFourOfAKind();
         if(win)
             break;
-        
+        // check if full house
         win=checkFullHouse();
         if(win)
             break;
 
+        // check if flush
         win=checkFlush();
         if(win)
             break;
-        
+        // check if straight
         win=checkStraight();
         if(win)
             break;
-        
+        //check if royal straight
         win=checkRoyalStraight();
         if(win)
             break;
@@ -99,11 +99,11 @@ int PokerGame::checkPlayerWin(){
         win=checkThreeOfAKind();
         if(win)
             break;
-
+        //check if two pair
         win=checkTwoPair();
         if(win)
             break;
-        
+        //check if pair of jacks or higher
         win=checkTwoOfAKind();
         
         break;
@@ -263,7 +263,7 @@ bool PokerGame::checkTwoPair(bool payout){
     return win;
 }
 
-
+// Check if hand is 3 of a kind
 bool PokerGame::checkThreeOfAKind(bool payout){
     //Return players hand
     std::vector<Card> tempHand=(*(*player).returnHand()).returnHand();
@@ -288,6 +288,7 @@ bool PokerGame::checkThreeOfAKind(bool payout){
     return win;
 }
 
+//check if 4 of a kind
 bool PokerGame::checkFourOfAKind(bool payout){
     //Return players hand
     std::vector<Card> tempHand=(*(*player).returnHand()).returnHand();
@@ -312,6 +313,7 @@ bool PokerGame::checkFourOfAKind(bool payout){
     return win;
 }
 
+// check if full house
 bool PokerGame::checkFullHouse(bool payout){
     //Return players hand
     std::vector<Card> tempHand=(*(*player).returnHand()).returnHand();

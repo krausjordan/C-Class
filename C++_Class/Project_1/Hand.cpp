@@ -108,7 +108,7 @@ int Hand::printHand(){
     //std::cout<<"*******************"<<std::endl;
     int count=0;
     for (auto iter = hand.begin(); iter != hand.cend(); ++iter){
-        std::cout<< count++<< " : ";
+        std::cout<< count++<< " :   ";
         (*iter).printCard();
     }
     //std::cout<<"*******************"<<std::endl;

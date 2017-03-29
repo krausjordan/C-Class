@@ -76,6 +76,7 @@ int GameInterface::waitForPlayerAction(){
     
 }
 
+//Let's player replace card(s) in their hand
 int GameInterface::replaceCards(){
     cout<<"How many cards do you want to replace (0-5)?:"<<endl;
     
@@ -166,7 +167,7 @@ int GameInterface::displayWelcome(){
 }
 
 
-// Prints out dealers hand and players hand and their values
+// Prints out players hand
 int GameInterface::displayTable(){
     cout<<"*********************"<<endl;
     cout<<"*****Player Hand*****"<<endl;
