@@ -28,6 +28,7 @@ public:
         memcpy(arrayElements,orig.arrayElements,sizeof(T)*size);
     }
     
+    //Destructor deletes array since it was created with new
     virtual ~MyArray <T>(){
         std::cout<<"Destructor"<<std::endl;
         if(size>0){
@@ -36,6 +37,7 @@ public:
         std::cout<<"Destructor end"<<std::endl;
     }
     
+    //creates array with any type T
     MyArray <T>(long sz){ 
         cout<<"Parametarized Constructor"<<endl;
         if(sz<1){
@@ -46,18 +48,18 @@ public:
         size= sz;
     }   
     
-    
+    //returns a copy of the object at the specified index
     T get_item(int index){
         return arrayElements[index];
     }
     
-    
+    //Sets the index of the array to the new value
     int set_item(int index, T value){
         arrayElements[index]= value;   
         return 0;
     }
     
-    
+    //returns the size of the array
     long get_size(){
         return this->size;
     }
