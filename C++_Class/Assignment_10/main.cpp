@@ -16,6 +16,7 @@
 #include <queue>
 #include <iostream>
 #include <string>
+#include "State.h"
 
 using namespace std;
 
@@ -48,6 +49,25 @@ int main(int argc, char** argv) {
     while( !port.empty()){
         cout<< port.top() << endl;
         port.pop();
+    }
+    
+    
+    cout<<endl;
+    
+    // Make set queue of states and then print them out
+    set<State> states;
+
+    states.insert(State("Illinois", "Springfield"));
+    states.insert(State("Wisconsin", "Madison"));
+    states.insert(State("California", "Sacremento"));
+    states.insert(State("New York", "Albany"));
+    states.insert(State("Alaska", "Juneau"));
+
+    set<State>::iterator p = states.begin();
+
+    // Print out list of states and capitals   
+    for(set<State>::iterator p=states.begin();p!=states.end();p++){
+        cout<< p->getName() << "\t" << p->getCapital() << endl;
     }
     
     

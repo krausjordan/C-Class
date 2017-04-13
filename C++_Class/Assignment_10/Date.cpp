@@ -129,7 +129,7 @@ std::istream& operator>>(std::istream& is, Date& date){
     return is;
 }
 
-
+// Overrides the == operator
 bool operator==(const Date& date1, const Date& date2){
     if(date1.year==date2.year && date1.month==date2.month && date1.day==date2.day)
         return true;
@@ -138,6 +138,7 @@ bool operator==(const Date& date1, const Date& date2){
             
 }
 
+// Overrides the less than operator
 bool operator<(const Date& date1, const Date& date2){
     if(date1.year==date2.year) {
         if(date1.month==date2.month){//base comparison on day
@@ -151,6 +152,7 @@ bool operator<(const Date& date1, const Date& date2){
             
 }
 
+// Overrides the greater than operator
 bool operator>(const Date& date1, const Date& date2){
     if(date1.year==date2.year) {
         if(date1.month==date2.month){//base comparison on day
