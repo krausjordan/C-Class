@@ -12,6 +12,10 @@
  */
 
 #include "Caller.h"
+#include <random>
+#include <vector>
+#include <iostream>
+using namespace std;
 
 #ifndef TECHNICIAN_H
 #define TECHNICIAN_H
@@ -21,14 +25,21 @@ public:
     Technician();
     Technician(const Technician& orig);
     virtual ~Technician();
-    bool updateTech();
+    Technician(default_random_engine* newEngine);
+    bool updateTech(double currentTime);
+    bool techFree();
     double calcHelpTime();
+    double changeCaller(Caller newCaller);
+    bool checkBusy();
     
 private:
     double helpTime;
     double endTime;
     double arrivalTime;
+    double currentTime;
     Caller currentCaller;
+    default_random_engine* engine;
+    bool busy;
 };
 
 #endif /* TECHNICIAN_H */

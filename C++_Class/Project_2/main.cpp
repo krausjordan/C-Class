@@ -14,6 +14,10 @@
 #include <cstdlib>
 #include <random>
 #include <iostream>
+#include "CallCenter.h"
+#include "Caller.h"
+#include "Technician.h"
+
 
 using namespace std;
 
@@ -22,7 +26,7 @@ using namespace std;
  */
 int main(int argc, char** argv) {
     
-    
+    /*
     
     // Generate Uniform RVs
     vector<unsigned> values(10);
@@ -55,10 +59,16 @@ int main(int argc, char** argv) {
     //for( int j = 0; j < valuesNormal.size(); j++ )
      //       cout << j << ": " << string( valuesNormal[j], '*' ) << endl;
 
+    */
+    
+    CallCenter support(3);
+    
     
     
     //Generate exponential RVs
+    default_random_engine e;
     exponential_distribution<> expoRandNums(40);
+    vector<Caller> callList;
 
     double interArrivalTime = 0;
     double arrivalTime = 0;
@@ -67,9 +77,28 @@ int main(int argc, char** argv) {
     {
         double v = expoRandNums(e);
         arrivalTime += v;
-
-       // cout << "InterArrival Time = " << v << "\tArrivalTime = " << arrivalTime << endl;
+        
+        cout << "InterArrival Time = " << v << "\tArrivalTime = " << arrivalTime << endl;
+        callList.push_back(Caller(i%2, arrivalTime));        
     }
+    
+    
+    
+    double currentTime=0;
+    while(currentTime<10 && !callList.empty()){
+        
+        //cout<<"increment time: "<<currentTime<<endl;
+        currentTime=support.incrementTime(.01);
+        cout<<"increment time: "<<currentTime<<endl;
+        
+        if(currentTime>=(callList.front().getArrivalTime())){
+            cout<<callList.size()<<endl;
+            support.addCaller(callList.front());
+            callList.erase(callList.begin());
+        }
+        
+    }
+    
 
     
 

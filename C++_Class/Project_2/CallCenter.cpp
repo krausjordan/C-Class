@@ -25,7 +25,7 @@ CallCenter::~CallCenter() {
 
 CallCenter::CallCenter(unsigned int numTechs){
     for(int i=0;i<numTechs; i++){
-        techs.push_back(Technician());
+        techs.push_back(Technician(this->engine));
     }
     double currentTime=0;
 }
@@ -35,19 +35,43 @@ double CallCenter::getCurrentTime(){
 }
 
 
-void CallCenter::incrementTime(double increment){
+double CallCenter::incrementTime(double increment){
     currentTime+=increment;
     checkTechs();
+    return currentTime;
 }
 
 void CallCenter::addCaller(Caller newCaller){
+    cout<<"Adding New Caller to Call Queue"<<endl;
+    callQueue.push(newCaller);
     
+    //Check if any techs are free, if so, add caller to them
+    for (auto iter = techs.begin(); iter != techs.cend(); ++iter){
+        if(!(*iter).checkBusy() && !callQueue.empty()){
+            cout<<"FreeTech"<<endl;
+            (*iter).changeCaller(callQueue.top());
+            callQueue.pop();
+        }
+    }
+    
+}
+
+void CallCenter::assignCallerToTech(){
     
 }
 
 void CallCenter::checkTechs(){
+    cout<<"checking techs"<<endl;
     for (auto iter = techs.begin(); iter != techs.cend(); ++iter){
-        (*iter).updateTech();
+        cout<<"a"<<endl;
+        if((*iter).updateTech(currentTime)){
+            cout<<"b"<<!callQueue.empty()<<endl;
+            if(!callQueue.empty()){
+                cout<<"c"<<endl;
+                (*iter).changeCaller(callQueue.top());
+                callQueue.pop();
+            }
+        }
     }
     
 }

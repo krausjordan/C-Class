@@ -16,6 +16,8 @@
 #include "Caller.h"
 #include <vector>
 #include <queue>
+#include <random>
+#include <iostream>
 
 using namespace std;
 
@@ -29,13 +31,15 @@ public:
     virtual ~CallCenter();
     CallCenter(unsigned int numTechs);
     void addCaller(Caller newCaller);
-    void incrementTime(double increment=1);
+    double incrementTime(double increment=1);
     double getCurrentTime();
     void checkTechs();
+    void assignCallerToTech();
 private:
     std::vector<Technician> techs;
-    priority_queue<Caller, vector<Caller>, Cmp> port;
+    priority_queue<Caller, vector<Caller>, Cmp> callQueue;
     double currentTime;
+    default_random_engine* engine;
 };
 
 #endif /* CALLCENTER_H */
