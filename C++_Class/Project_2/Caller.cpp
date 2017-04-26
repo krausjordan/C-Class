@@ -28,10 +28,10 @@ Caller::Caller(bool subscriptionStatus, double newArrivalTime){
     this->arrivalTime=newArrivalTime;
 }
 
-double Caller::getArrivalTime(){
+double Caller::getArrivalTime() const{
     return this->arrivalTime;
 }
 
-bool Caller::getSubscriptionStatus(){
+bool Caller::getSubscriptionStatus() const{
     return this->paidSubscription;
 }

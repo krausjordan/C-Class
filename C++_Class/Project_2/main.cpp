@@ -67,39 +67,50 @@ int main(int argc, char** argv) {
     
     //Generate exponential RVs
     default_random_engine e;
-    exponential_distribution<> expoRandNums(40);
+    exponential_distribution<> expoRandNums(25);
     vector<Caller> callList;
 
     double interArrivalTime = 0;
     double arrivalTime = 0;
-
-    for(int i = 0; i < 20; i++)
+    int count=0;
+    
+    //for(int i = 0; i < 25; i++)
+    while(arrivalTime<(24*60))
     {
-        double v = expoRandNums(e);
+        double v = 60*expoRandNums(e);
         arrivalTime += v;
         
         cout << "InterArrival Time = " << v << "\tArrivalTime = " << arrivalTime << endl;
-        callList.push_back(Caller(i%2, arrivalTime));        
+        callList.push_back(Caller(count%2, arrivalTime));   
+        count++;
     }
-    
+    int sizeOfCallList=callList.size();
     
     
     double currentTime=0;
-    while(currentTime<10 && !callList.empty()){
+    while(currentTime<(24.5*60) && !callList.empty()){
         
         //cout<<"increment time: "<<currentTime<<endl;
-        currentTime=support.incrementTime(.01);
+        currentTime=support.incrementTime(.1);
         cout<<"increment time: "<<currentTime<<endl;
         
         if(currentTime>=(callList.front().getArrivalTime())){
             cout<<callList.size()<<endl;
             support.addCaller(callList.front());
+            support.printCallList();
+
             callList.erase(callList.begin());
         }
-        
+        support.printCallList();
     }
+    cout<<"Total Number of generated Callers: "<<sizeOfCallList<<endl;
     
-
+    
+    cout<<"Total Number of Callers Serviced: "<<support.getTotNumServiced()<<endl;
+    cout<<"Avg Queue wait time: "<<support.getAvgQueueTime()<<endl;
+    cout<<"Avg Service wait time: "<<support.getAvgServiceTime()<<endl;
+    cout<<"Avg total wait time: "<<support.getAvgWaitTime()<<endl;
+    cout<<"Num Callers still waiting: "<<support.getCallQueueLength()<<endl;
     
 
     return 0;

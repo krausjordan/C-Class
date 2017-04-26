@@ -15,6 +15,7 @@
 #include <random>
 #include <vector>
 #include <iostream>
+#include <string>
 using namespace std;
 
 #ifndef TECHNICIAN_H
@@ -25,12 +26,13 @@ public:
     Technician();
     Technician(const Technician& orig);
     virtual ~Technician();
-    Technician(default_random_engine* newEngine);
+    Technician(default_random_engine* newEngine, char newName);
     bool updateTech(double currentTime);
     bool techFree();
     double calcHelpTime();
     double changeCaller(Caller newCaller);
     bool checkBusy();
+    void printStatus();
     
 private:
     double helpTime;
@@ -38,8 +40,9 @@ private:
     double arrivalTime;
     double currentTime;
     Caller currentCaller;
-    default_random_engine* engine;
+    default_random_engine engine;
     bool busy;
+    string name;
 };
 
 #endif /* TECHNICIAN_H */

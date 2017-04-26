@@ -35,11 +35,22 @@ public:
     double getCurrentTime();
     void checkTechs();
     void assignCallerToTech();
+    void printCallList();
+    double getAvgWaitTime();
+    double getAvgQueueTime();
+    int getTotNumServiced();
+    double getAvgServiceTime();
+    int getCallQueueLength();
+    int getNumCallersAdded();
 private:
     std::vector<Technician> techs;
     priority_queue<Caller, vector<Caller>, Cmp> callQueue;
     double currentTime;
     default_random_engine* engine;
+    int totNumServiced;
+    double totServiceTime;
+    double totQueueTime;
+    int totCallersAdded;
 };
 
 #endif /* CALLCENTER_H */

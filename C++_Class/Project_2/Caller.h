@@ -11,6 +11,8 @@
  * Created on April 25, 2017, 12:20 AM
  */
 
+#include <ostream>
+
 #ifndef CALLER_H
 #define CALLER_H
 
@@ -20,8 +22,10 @@ public:
     Caller(const Caller& orig);
     virtual ~Caller();
     Caller(bool subscriptionStatus, double newArrivalTime);
-    bool getSubscriptionStatus();
-    double getArrivalTime();
+    bool getSubscriptionStatus() const;
+    double getArrivalTime() const;
+    friend std::ostream& operator<<(std::ostream& os, const Caller& caller);
+
 private:
     bool paidSubscription;
     double arrivalTime;
