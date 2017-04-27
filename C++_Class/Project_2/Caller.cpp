@@ -23,15 +23,18 @@ Caller::Caller(const Caller& orig) {
 Caller::~Caller() {
 }
 
+//Arg constructor
 Caller::Caller(bool subscriptionStatus, double newArrivalTime){
     this->paidSubscription=subscriptionStatus;
     this->arrivalTime=newArrivalTime;
 }
 
+//Return object's arrival time
 double Caller::getArrivalTime() const{
     return this->arrivalTime;
 }
 
+//Return object's subsription status
 bool Caller::getSubscriptionStatus() const{
     return this->paidSubscription;
 }

@@ -26,46 +26,11 @@ using namespace std;
  */
 int main(int argc, char** argv) {
     
-    /*
-    
-    // Generate Uniform RVs
-    vector<unsigned> values(10);
-    default_random_engine e;
-    uniform_int_distribution<unsigned> uniformRandNums(0, 9);
-
-    for(int i = 0; i < 300; i++)
-    {
-            unsigned v = uniformRandNums(e);
-            if( v < values.size() )
-                    values[v]++; // count how often value appears
-    }
-
-    //for( int j = 0; j < values.size(); j++ )
-    //    cout << j << ": " << string( values[j], '*' ) << endl;
-    
-    
-    // Generate Normal distribution
-    vector<unsigned> valuesNormal(10);
-
-    normal_distribution<> normalRandNums(4, 1.5);
-
-    for(int i = 0; i < 200; i++)
-    {
-            unsigned v = lround( normalRandNums(e) );	// round			
-            if( v < values.size() )
-                    valuesNormal[v]++;	// count how often value appears
-    }
-
-    //for( int j = 0; j < valuesNormal.size(); j++ )
-     //       cout << j << ": " << string( valuesNormal[j], '*' ) << endl;
-
-    */
-    
+    //Call support center with 3 technicians
     CallCenter support(3);
     
     
-    
-    //Generate exponential RVs
+    //Generate exponential RVs with average of 25 calls per hour
     default_random_engine e;
     exponential_distribution<> expoRandNums(25);
     vector<Caller> callList;
@@ -73,8 +38,9 @@ int main(int argc, char** argv) {
     double interArrivalTime = 0;
     double arrivalTime = 0;
     int count=0;
-    
-    //for(int i = 0; i < 25; i++)
+    priority_queue<Caller, vector<Caller>, Cmp> callQueue;
+
+    //Generate 1 days worth of callers. Units are minutes. every other caller has a paid subscription
     while(arrivalTime<(24*60))
     {
         double v = 60*expoRandNums(e);
@@ -82,11 +48,15 @@ int main(int argc, char** argv) {
         
         cout << "InterArrival Time = " << v << "\tArrivalTime = " << arrivalTime << endl;
         callList.push_back(Caller(count%2, arrivalTime));   
+        callQueue.push(Caller(count%2,arrivalTime));
         count++;
     }
     int sizeOfCallList=callList.size();
+    cout<<callQueue.top()<<endl;
     
+
     
+    //Walk through one day's worth of callers. Add them to the Queue when current time hits their arrival time
     double currentTime=0;
     while(currentTime<(24.5*60) && !callList.empty()){
         
@@ -103,15 +73,17 @@ int main(int argc, char** argv) {
         }
         support.printCallList();
     }
+    
+    cout<<"--------------------------------------------------"<<endl;
+    //Print statistics
     cout<<"Total Number of generated Callers: "<<sizeOfCallList<<endl;
-    
-    
     cout<<"Total Number of Callers Serviced: "<<support.getTotNumServiced()<<endl;
-    cout<<"Avg Queue wait time: "<<support.getAvgQueueTime()<<endl;
-    cout<<"Avg Service wait time: "<<support.getAvgServiceTime()<<endl;
-    cout<<"Avg total wait time: "<<support.getAvgWaitTime()<<endl;
+    cout<<"Avg Queue wait time:  "<<support.getAvgQueueTime()<<"  minutes"<<endl;
+    cout<<"Avg Service wait time:  "<<support.getAvgServiceTime()<<"  minutes"<<endl;
+    cout<<"Avg total wait time:  "<<support.getAvgWaitTime()<<"  minutes"<<endl;
     cout<<"Num Callers still waiting: "<<support.getCallQueueLength()<<endl;
     
+    support.printTechCounters();
 
     return 0;
 }

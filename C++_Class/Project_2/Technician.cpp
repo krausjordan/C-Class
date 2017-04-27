@@ -24,21 +24,22 @@ Technician::Technician(const Technician& orig) {
 Technician::~Technician() {
 }
 
-Technician::Technician(default_random_engine* newEngine, char newName){
-    //this->engine=newEngine;
+//Arg constructor
+Technician::Technician(char newName){
     this->helpTime=0;
     this->busy=false;
     this->name=newName;
+    this->callerCounter=0;
 }
 
-//check if Current time is past end help time for customer
+//check if Current time is past end help time for customer. Returns free/busy status
 bool Technician::updateTech(double currentTime){
     this->currentTime=currentTime;
-    //Tech is finished with customer, tell CallCenter
+    
+    //If Tech is finished with customer, tell CallCenter
     if(currentTime>= (this->endTime)&&helpTime!=0){  
-        cout<<";lkjajlk;df;jk"<<this->endTime<<endl;
         this->busy=false;
-        this->                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                helpTime=0;
+        this->helpTime=0;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            helpTime=0;
         cout<<"Tech "<<this->name<<"  finished with caller "<<currentCaller.getArrivalTime()+this->helpTime<<endl;
         return true;
     }
@@ -46,43 +47,38 @@ bool Technician::updateTech(double currentTime){
         return false;
 }
 
+//Calculate help time for caller using normal distribution with 6 min mean and 2 min std dev.
 double Technician::calcHelpTime(){
-    //default_random_engine e;
     // Generate Normal distribution
-    //vector<unsigned> valuesNormal(10);
-    cout<<"aa"<<endl;
     normal_distribution<> normalRandNums(6, 2);
-    cout<<"ab"<<endl;
-    //cout<<normalRandNums(e)<<endl;
-
     double helpTime = normalRandNums((this->engine));
     //cout<<"helpTime "<<helpTime<<endl;
-    cout<<"bb"<<endl;
+    
     //Update Technician times
     this->helpTime=helpTime;
     this->arrivalTime=this->currentTime;
     this->endTime=this->currentTime+this->helpTime;
-    cout<<"asdfasdfadsf"<<endTime<<endl;
-    cout<<"cc"<<endl;
+    
     return helpTime;
 }
 
-
+//Adds a new caller to the Tech, resets flags
 double Technician::changeCaller(Caller newCaller){
     cout<<"Tech Changing caller"<<endl;
     this->currentCaller=newCaller;
     this->busy=true;
+    this->callerCounter++;
     calcHelpTime();
     printStatus();
     return this->helpTime;
 }
 
-
+//Returns the Tech's busy or free status
 bool Technician::checkBusy(){
     return this->busy;
 }
 
-
+//Print's what the Tech's current status is
 void Technician::printStatus(){
     cout<<"Tech "<<this->name<<"  is ";
     if(this->busy)
@@ -90,4 +86,10 @@ void Technician::printStatus(){
     else
         cout<<"free"<<endl;                
     
+}
+
+//Print tech's caller counter and returns the value
+int Technician::getCallerCounter(){
+    cout<<"Tech "<<this->name<<" helped "<<this->callerCounter<<" Callers"<<endl;
+    return this->callerCounter;
 }

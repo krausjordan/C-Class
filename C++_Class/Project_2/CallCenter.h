@@ -34,8 +34,8 @@ public:
     double incrementTime(double increment=1);
     double getCurrentTime();
     void checkTechs();
-    void assignCallerToTech();
-    void printCallList();
+    void printTechCounters();
+    void printCallList() const;
     double getAvgWaitTime();
     double getAvgQueueTime();
     int getTotNumServiced();
@@ -46,7 +46,6 @@ private:
     std::vector<Technician> techs;
     priority_queue<Caller, vector<Caller>, Cmp> callQueue;
     double currentTime;
-    default_random_engine* engine;
     int totNumServiced;
     double totServiceTime;
     double totQueueTime;

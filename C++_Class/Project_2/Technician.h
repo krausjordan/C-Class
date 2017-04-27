@@ -26,13 +26,14 @@ public:
     Technician();
     Technician(const Technician& orig);
     virtual ~Technician();
-    Technician(default_random_engine* newEngine, char newName);
+    Technician(char newName);
     bool updateTech(double currentTime);
     bool techFree();
     double calcHelpTime();
     double changeCaller(Caller newCaller);
     bool checkBusy();
     void printStatus();
+    int getCallerCounter();
     
 private:
     double helpTime;
@@ -43,6 +44,7 @@ private:
     default_random_engine engine;
     bool busy;
     string name;
+    int callerCounter;
 };
 
 #endif /* TECHNICIAN_H */

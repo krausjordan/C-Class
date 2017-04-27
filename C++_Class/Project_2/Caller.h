@@ -36,10 +36,10 @@ private:
 class Cmp{
 public: bool operator()(Caller &x, Caller &y){
     if(x.getSubscriptionStatus() == y.getSubscriptionStatus()){//both have same priority level
-        return x.getArrivalTime()< y.getArrivalTime(); // Make judgement on arrival time
+        return x.getArrivalTime()> y.getArrivalTime(); // Make judgement on arrival time
     }
     else{//one pays for subscription and one doesn't
-        return x.getSubscriptionStatus();
+        return y.getSubscriptionStatus();
     }
 }
 
