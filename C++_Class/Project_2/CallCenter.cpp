@@ -99,12 +99,15 @@ void CallCenter::checkTechs(){
 void CallCenter::printCallList() const{
     
     priority_queue<Caller, vector<Caller>, Cmp> temp=this->callQueue;
-    
+    cout<<"-----------Current Call Queue --------"<<endl;
+    if(temp.empty())
+        cout<<"***Empty Call Queue***"<<endl;
     //Print out callQueue queue and empty list
     while( !temp.empty()){
         cout<< temp.top() << endl;
         temp.pop();
     }
+    cout<<"--------------------------------------"<<endl;
 }
 
 //Overrides outstream operator

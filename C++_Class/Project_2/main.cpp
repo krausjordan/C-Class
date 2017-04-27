@@ -48,11 +48,11 @@ int main(int argc, char** argv) {
         
         cout << "InterArrival Time = " << v << "\tArrivalTime = " << arrivalTime << endl;
         callList.push_back(Caller(count%2, arrivalTime));   
-        callQueue.push(Caller(count%2,arrivalTime));
+        //callQueue.push(Caller(count%2,arrivalTime));
         count++;
     }
     int sizeOfCallList=callList.size();
-    cout<<callQueue.top()<<endl;
+    //cout<<callQueue.top()<<endl;
     
 
     
@@ -67,7 +67,7 @@ int main(int argc, char** argv) {
         if(currentTime>=(callList.front().getArrivalTime())){
             cout<<callList.size()<<endl;
             support.addCaller(callList.front());
-            support.printCallList();
+            //support.printCallList();
 
             callList.erase(callList.begin());
         }
