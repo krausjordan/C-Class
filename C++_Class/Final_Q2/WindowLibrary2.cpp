@@ -22,14 +22,17 @@ WindowLibrary2::WindowLibrary2(const WindowLibrary2& orig) {
 WindowLibrary2::~WindowLibrary2() {
 }
 
+//Prints library 2 close output
 void WindowLibrary2::winClose(){
     cout<<"New Window Library 2 Close window"<<endl;
 }
 
+//Prints library 2 move output
 void WindowLibrary2::winMove(){
     cout<<"New Window Library 2 Move window"<<endl;
 }
 
+//Prints library 2 open output
 void WindowLibrary2::winOpen(){
     cout<<"New Window Library 2 Open window"<<endl;
 }

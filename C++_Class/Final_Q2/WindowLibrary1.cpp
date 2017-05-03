@@ -22,14 +22,17 @@ WindowLibrary1::WindowLibrary1(const WindowLibrary1& orig) {
 WindowLibrary1::~WindowLibrary1() {
 }
 
+// Prints library 1 close output
 void WindowLibrary1::closeWin(){
     cout<<"New Window Library 1 Close window"<<endl;
 }
 
+// Prints library 1 move output
 void WindowLibrary1::moveWin(){
     cout<<"New Window Library 1 Move window"<<endl;
 }
 
+// Prints library 1 open output
 void WindowLibrary1::openWin(){
     cout<<"New Window Library 1 Open window"<<endl;
 }

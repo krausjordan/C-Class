@@ -25,25 +25,24 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
-
+    
+    // Create Windows pointer
     int length=3;
     Window* windows[length];
     
+    //Make a window of each type
     windows[0]=new WindowLibraryOld();
     windows[1]=new WindowLibrary1Adapter();
     windows[2]=new WindowLibrary2Adapter();
     
+    //Polymorphically call the window functions proving the adapters work
     for(int i=0; i<length; i++){
         windows[i]->open();
         windows[i]->move();
         windows[i]->close();
     }
     
-    
-    
-    
-    
-    
+
     return 0;
 }
 

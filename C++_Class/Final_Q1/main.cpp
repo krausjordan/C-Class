@@ -22,13 +22,15 @@ using namespace std;
 /*
  * 
  */
+
+//Prints out dates in the vector using the for_each algorithm
 void display(vector<Date> &dates){
-    //cout<< for_each(dates.begin, dates.end, isOdd())<<endl;
     cout<<"-----Start dates-----"<<endl;
     for_each(dates.begin(),dates.end(),displayDate());
     cout<<"-----End Dates------"<<endl;
 }
 
+// Prints out the number of odd dates in the vector
 void count(vector<Date> &dates){
     int counter= count_if(dates.begin(),dates.end(),isOdd());
     cout<<"Number of odd Dates: "<<counter<<endl;
@@ -38,7 +40,7 @@ void count(vector<Date> &dates){
 int main(int argc, char** argv) {
     
     
-    
+    // Create dates
     Date a(12,12,2012);
     Date b(12,31,2013);
     Date c(10,12,2012);
@@ -46,8 +48,9 @@ int main(int argc, char** argv) {
     Date e(4,30,2013);
     Date f(9,25,2012);
             
-    cout<<f.is_Odd()<<endl;
+    //cout<<f.is_Odd()<<endl;
     
+    // Adds dates to vector
     vector <Date> dates;
     dates.push_back(a);
     dates.push_back(b);

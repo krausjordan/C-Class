@@ -171,11 +171,12 @@ bool operator>(const Date& date1, const Date& date2){
             
 }
 
-
+// Checks if a date object day is and odd number
 bool Date::is_Odd(){
     return ((this->day)%2);
 }
 
+// Checks if a date object is odd when passing in a Date
 bool Date::is_Odd(Date date){
     return date.is_Odd();
 }

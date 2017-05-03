@@ -22,10 +22,12 @@ Square::Square(const Square& orig) {
 Square::~Square() {
 }
 
+//Print Square Draw
 void Square::draw(){
     cout<<"Square Draw"<<endl;
 }
 
+//Print Square Show
 void Square::show(){
     cout<<"Square Show"<<endl;
 }

@@ -31,6 +31,7 @@ int main(int argc, char** argv) {
     shapeList[0]= new Square();
     shapeList[1]= new Rectangle();
     
+    //Dynamic cast shape pointer to quadrilateral pointer so it can call draw and show functions
     for(int i=0; i<length;i++){
         dynamic_cast<Quadrilateral*>(shapeList[i])->draw();
         dynamic_cast<Quadrilateral*>(shapeList[i])->show();

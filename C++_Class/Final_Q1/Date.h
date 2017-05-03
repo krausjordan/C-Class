@@ -47,6 +47,7 @@ private:
     int year;
 };
 
+// Unary function template
 template <class Argument, class Result>
 struct unary_function
 {
@@ -54,6 +55,7 @@ struct unary_function
     typedef Result result_type;
 };
 
+// Unary function to check if a date has an odd day
 class isOdd : public unary_function<Date, bool>
 {
 public:     
@@ -63,15 +65,17 @@ public:
     }
 };
 
+// Unary Function to display the date
 class displayDate : public unary_function<Date, bool>
 {
 public:     
     result_type operator()(argument_type i){
         std::cout<<i<<std::endl;
-        return true;//(result_type)((i.get_Day())%2);
+        return true;
     }
 };
 
+// Compare operator for Dates
 class Cmp{
 public: bool operator()(const Date &x, const Date &y){
     return x>y;

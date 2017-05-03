@@ -22,10 +22,12 @@ Rectangle::Rectangle(const Rectangle& orig) {
 Rectangle::~Rectangle() {
 }
 
+//Print Rectangle Draw
 void Rectangle::draw(){
     cout<<"Rectangle Draw"<<endl;
 }
 
+//Print Rectangle Show
 void Rectangle::show(){
     cout<<"Rectangle Show"<<endl;
 }

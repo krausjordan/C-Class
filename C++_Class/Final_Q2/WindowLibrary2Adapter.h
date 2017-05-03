@@ -19,6 +19,7 @@
 
 class WindowLibrary2Adapter : public Window{
 public:
+    // Adapter functions that call new window library functions
     void open(){window.winOpen();};
     void close(){window.winClose();};
     void move(){window.winMove();};
